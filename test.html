@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>Document</title>
+</head>
+<body>
+	<h4>声明与渲染</h4>
+	<div id="app">
+		{{msg}}
+	</div>
+
+	<div id="app-2">
+		<span v-bind:title="msg">
+			    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		</span>
+	</div>
+
+	<h4>条件与循环</h4>
+	<div id="app-3">
+		<p v-if='screen'>现在你看到我了</p>
+	</div>
+	<div id="app-4">
+		<ol>
+			<li v-for="i in todos">
+				{{ i.text }}
+			</li>
+		</ol>
+	</div>
+
+	<h4>处理用户输入</h4>
+	<div id="app-5">
+		<p>{{msg}}</p>
+		<button v-on:click = "reverseMsg">逆转消息</button>
+	</div>
+	<div id="app-6">
+		<p>{{msg}}</p>
+		<input v-model="msg" placeholder="想到就去做">
+	</div>
+	<ol>
+		<!-- 创建一个 todo-item 的组件实例 -->
+		<todo-item></todo-item>
+	</ol>
+
+
+	<script src="vue.js"></script>
+	<script src="my.js"></script>
+</body>
+</html>
