@@ -46,6 +46,7 @@ var app = new Vue({
 
 		Vue.component(
 			'todo-item',{
+				props:['todo'],
 				template: '<li>这个是待办项</li>'
 			}
 			)
