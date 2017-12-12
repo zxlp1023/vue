@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>组件</title>
+</head>
+
+<body>
+	全局注册 创建Vue实例
+	<pre>
+		new Vue({
+			el: '#a1',
+			//do
+		})
+	</pre> 注册全局组件 用 Vue.component(tagName,options)
+	<pre>
+		Vue.component('header',{
+			//do
+		})
+	</pre>
+
+	<div id="header">
+		<nav-bar></nav-bar>
+		<my-component></my-component>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script src="js/component.js"></script>
+</body>
+
+</html>

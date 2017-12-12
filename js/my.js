@@ -45,19 +45,19 @@ var app6 = new Vue({
 });
 
 Vue.component(
-	'todo-item',{
-		props:['todo'],
+	'todo-item', {
+		props: ['todo'],
 		template: '<li>这个是待办项</li>'
 	}
-	)
+)
 
 
 var example1 = new Vue({
 	el: "#example-1",
-	data:{
-		items:[
-			{message:"Foo"},
-			{message:"Bar"}
+	data: {
+		items: [
+			{ message: "Foo" },
+			{ message: "Bar" }
 		]
 	}
 })
