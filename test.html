@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>Document</title>
 </head>
+
 <body>
 	<h4>声明与渲染</h4>
 	<div id="app">
@@ -13,7 +15,7 @@
 
 	<div id="app-2">
 		<span v-bind:title="msg">
-			    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
 		</span>
 	</div>
 
@@ -32,7 +34,7 @@
 	<h4>处理用户输入</h4>
 	<div id="app-5">
 		<p>{{msg}}</p>
-		<button v-on:click = "reverseMsg">逆转消息</button>
+		<button v-on:click="reverseMsg">逆转消息</button>
 	</div>
 	<div id="app-6">
 		<p>{{msg}}</p>
@@ -43,8 +45,28 @@
 		<todo-item></todo-item>
 	</ol>
 
+	<template v-if="loginType === 'username'">
+		<label>usernaame</label>
+		<input type="text" placeholder="Enter you username">
+	</template>
+	<template v-else>
+		<label>Email</label>
+		<input type="text" placeholder="Enter you email address">
+	</template>
+
+	<ul id="example-1">
+		<li v-for="x in items">
+			{{ x.message }}
+		</li>
+	</ul>
+	<ul id="example-2">
+		<li v-for="(item,index) in items">
+			{{parentMessage}} - {{index}} - {{item.message}}
+		</li>
+	</ul>
 
 	<script src="js/vue.js"></script>
 	<script src="js/my.js"></script>
 </body>
+
 </html>
