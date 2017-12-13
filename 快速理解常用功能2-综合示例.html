@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+</head>
+
+<body>
+  <div id="app">
+    <fieldset>
+      <legend>用户管理</legend>
+      <div>
+        <label>用户名:</label>
+        <input type="text" v-model="newPerson.name">
+      </div>
+      <div>
+        <label>年龄:</label>
+        <input type="text" v-model="newPerson.age">
+      </div>
+      <div>
+        <label>性别:</label>
+        <select v-model="newPerson.sex">
+          <option value="Mr">Mr</option>
+          <option value="Miss">Miss</option>
+        </select>
+      </div>
+      <div>
+        <button @click="addPerson">添加</button>
+      </div>
+    </fieldset>
+    <table>
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="person in people">
+          <td>{{person.name}}</td>
+          <td>{{person.age}}</td>
+          <td>{{person.sex}}</td>
+          <td>
+            <button @click="deletePerson($index)">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <script src="js/vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        newPerson: {
+          name: '',
+          age: 18,
+          sex: 'Mr',
+        },
+        people: [
+          { name: 'lp', age: 28, sex: 'man' },
+          { name: 'lh', age: 24, sex: 'man' },
+          { name: 'yp', age: 22, sex: 'woman' },
+        ]
+      },
+      methods: {
+        addPerson: function () {
+          this.people.push(this.newPerson);
+          this.newPerson = { name: '', age: 0, sex: 'Mr' }
+        },
+        deletePerson: function (index) {
+          this.people.splice(index, 1);
+        }
+      }
+    })
+
+    // record
+    /* 首先设计模型,
+    1.绑定页面元素
+    2.数据呈现
+    3.设计方法
+    4.view结构设计
+    5.view绑定数据
+    6.调试以完成数据调用 */
+  </script>
+</body>
+
+</html>

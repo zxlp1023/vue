@@ -33,12 +33,24 @@ Vue.component(
   }
 )
 
-Vue.component('child', {
+/* Vue.component('child', {
   // 声明props
   props:['message'],
   template:'<span>{{message}}</span>'
 
+}) */
+Vue.component('child', {
+  // 声明 props
+  props: ['message'],
+  // 就像 data 一样，prop 也可以在模板中使用
+  // 同样也可以在 vm 实例中通过 this.message 来使用
+  template: '<span>{{ message }}</span>'
 })
+
 new Vue({
   el:'#example2'
+})
+
+new Vue({
+  el:'#example3'
 })

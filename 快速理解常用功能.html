@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>60minutes</title>
+  <style>
+    .on{ background: green; }
+    #app7 li{ display: inline-block;}
+    #app7 a{ padding: 5px;}
+  </style>
+</head>
+<body>
+ <!-- //Hello World示例 -->
+ <!-- View -->
+ <div id="app">
+   {{msg}}
+ </div>
+
+ <!-- 双向绑定 -->
+ <div id="app2">
+   <input type="text" v-model="price1">
+   <p><span>现价:¥</span>{{price1}}.00</p>
+   <p><span>原价:¥</span>{{price2}}.00</p>
+ </div>
+ 
+ <div id="app3">
+   <h3>Hello,Vue.js!</h3>
+   <h3 v-if="yes">Yes!</h3>
+   <h3 v-if="no">No!</h3>
+   <h3 v-if="age >= 25">Age:{{ age }}</h3>
+   <h3 v-if="name.indexOf('jack') >= 0 "> Name:{{name}} </h3>
+ </div>
+ <div id="app4">
+   <h3>Hello,Vue.js!</h3>
+   <h3 v-show="yes">Yes!</h3>
+   <h3 v-show="no">No!</h3>
+   <h3 v-show="age >= 25">Age:{{ age }}</h3>
+   <h3 v-show="name.indexOf('jack') >= 0 "> Name:{{name}} </h3>
+ </div>
+<div>________________________________________________________</div>
+ <!-- v-else -->
+ <div id="app5">
+   <h3>Hello,Vue.js!</h3>
+   <h3 v-if="age >= 25">Age:{{ age }}</h3>
+   <h3 v-else> Name:{{name}} </h3>
+   <h3 v-show="name.indexOf('h') >= 0 "> Name:{{name}} </h3>
+   <h3 v-else> Sex:{{sex}} </h3>
+ </div>
+
+ <!-- v-for -->
+ <div id="app6">
+   <ul>
+     <li v-for="p in people">
+       <span>{{ p.name }}</span>
+       <span>{{ p.age }}</span>
+       <span>{{ p.sex }}</span>
+     </li>
+   </ul>
+ </div>
+
+ <!-- v-bind -->
+ <!-- 可以在后面带一个参数, 中间用冒号隔开,这个参数通常是元素的特性(attribute),例如 v-bind:class  ,下面案例,高亮当前页 -->
+<div id="app7">
+  <ul>
+    <li v-for = " n in allPage">
+      <a href="javascript:;" v-bind:class=" on === n+1 ? 'active' : '' ">{{ n + 1 }}</a>
+    </li>
+  </ul>
+</div> 
+
+<!-- v-on -->
+<!-- //监听事件  调用方法:  绑定方法 或者 内联语句 -->
+<div id="app8">
+  <p>
+    <input type="text" v-model="msg">
+  </p>
+  <p>
+    <!-- 绑定方法 -->
+    <button @click="greet">Greet</button>
+  </p>
+  <p>
+    <!-- 使用内联语句 -->
+    <button @click="say('H111i')">Hi</button>
+  </p>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+  // Model
+/*   var caseData = {
+    msg:'Hello World!'
+  } */
+
+  // Vue连接 View 与 Model
+  new Vue({
+    el:"#app",
+    data: {
+      msg:'Hello Word!'
+    }
+    //使用Vue的过程就是定义各个MVVM组成部分的过程
+    /* 1.定义View
+    2.定义Model
+    3.创建一个Vue实例或者ViewModel,用户连接View和Model */
+  })
+
+  new Vue({
+    el:'#app2',
+    data:{
+      price1:'199',
+      price2:'399',
+    }
+  })
+
+  new Vue({
+    //v-if指令 ,根据判断的结果来决定是否执行
+    el:'#app3',
+    data:{
+      yes:true,
+      no:true,
+      age:28,
+      name:'kamil jack',
+    }
+  })
+
+  var app4 = new Vue({
+    // v-show根据返回的布尔值控制元素显示或者隐藏
+    el:'#app4',
+    data: {
+      yes: true,
+      no: true,
+      age: 21,
+      name: 'lh',
+    }
+  })
+
+  var app5 = new Vue({
+    // v-if的条件为true,则else不会执行,  if条件为false, 查找else, 直到条件为true才停止
+    el:'#app5',
+    data:{
+      age:21,
+      name:'lp',
+      sex:'Mr'
+    }
+  })
+
+  var app6 = new Vue({
+    el:'#app6',
+    data:{
+      people:[
+        {name:'lp',age:28,sex:'man'},
+        {name:'lh',age:24,sex:'man'},
+        {name:'yp',age:22,sex:'woman'},
+      ]
+    }
+  })
+
+  var app7 = new Vue({
+    el:'#app7',
+    data:{
+      on:1,
+      allPage:10
+    }
+  })
+
+  new Vue({
+      el: '#app8',
+      data: {
+        msg: 'Hello, v-on!'
+      },
+      methods: {
+        greet: function () {
+          alert(this.msg)
+        },
+        say: function (msg) {
+          alert(msg)
+        }
+      }
+    })
+
+</script>
+</body>
+</html>

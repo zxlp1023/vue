@@ -32,18 +32,62 @@
 		<simple-counter></simple-counter>
 	</div>
 
-	<child message='hello!'></child>
+	
+	<div id="example3">
+		<child message='hell1o!'></child>
+	</div>
+
+	<!-- 动态Prop -->
+	<div id="dtProp">
+		<input type="text" v-model="parentMsg">
+		<br>
+		<child :my-message="parentMsg"></child>
+	</div>
+
+	<div id="case1">
+		<todo-item v-bind="todo"></todo-item>
+
+		<todo-item>
+			
+		</todo-item>
+		<child></child>
+	</div>
+
 
 	<script src="js/vue.js"></script>
 	<script src="js/component.js"></script>
-	<script>
-	Vue.component('child', {
-			// 声明props
-			props: ['message'],
-			template: '<span>{{message}}</span>'
 
+	<script>
+		//动态Prop
+		new Vue({
+			el:'#dtProp',
+			data:{
+				parentMsg:'来自父级的信息'
+			},
+			components:{
+				'child':{
+					props:['myMessage'],
+					template:'<span>{{myMessage}}</span>'
+				}
+			}
+		})	
+
+		// 把对象的所有属性作为prop传递
+		new Vue({
+			el:'#case1',
+			todo:{
+				text:'Learn Vue',
+				isComplate:false
+			},
+			components:{
+					'child':{
+						props:['a1','a2'],
+						template: '<span>{{a1}}</span><span>{{a2}}</span>'
+					}
+			}
 		})
-		</script>
+	</script>
+
 </body>
 
 </html>
