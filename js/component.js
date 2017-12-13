@@ -22,3 +22,9 @@ new Vue({
 })
 
 
+Vue.component('child', {
+  // 声明props
+  props:['message'],
+  template:'<span>{{message}}</span>'
+
+})

@@ -26,8 +26,18 @@
 		<my-component></my-component>
 	</div>
 
+	<children message='hello!'></children>
+
 	<script src="js/vue.js"></script>
 	<script src="js/component.js"></script>
+	<script>
+	Vue.component('child', {
+			// 声明props
+			props: ['message'],
+			template: '<span>{{message}}</span>'
+
+		})
+		</script>
 </body>
 
 </html>
